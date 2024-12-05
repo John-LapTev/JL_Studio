@@ -1,0 +1,142 @@
+/* Base typography styles */
+
+/* Page title */
+.page-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.page-title h1 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--spacing-sm);
+}
+
+.page-title .subtitle {
+    color: var(--text-secondary);
+    font-size: var(--font-size-lg);
+}
+
+.promo {
+    font-size: 13px;
+    color: #ff9f05;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+/* Section headings */
+.section-title {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.section-subheader {
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-sm);
+    border-left: 3px solid var(--accent-primary);
+}
+
+/* Info text */
+.img2img-info,
+.lora-description {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.5;
+}
+
+/* Value displays */
+.value {
+    font-family: 'Consolas', monospace;
+    font-size: var(--font-size-sm);
+}
+
+/* Placeholders */
+.upload-placeholder,
+.preview-placeholder,
+.history-placeholder {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    text-align: center;
+}
+
+/* Progress status */
+.progress-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+}
+
+.progress-percent {
+    font-weight: 500;
+    font-family: 'Consolas', monospace;
+}
+
+.progress-stage {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Empty states */
+.empty-state-text {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.empty-state-hint {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* LoRA titles */
+.lora-name {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.lora-title {
+    font-size: var(--font-size-xs);
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* Tooltips and hints */
+[title] {
+    cursor: help;
+}
+
+/* Mobile adaptations */
+@media (max-width: 768px) {
+    .page-title h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .page-title .subtitle {
+        font-size: var(--font-size-base);
+    }
+}
+
+@media (max-width: 480px) {
+    .page-title h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .section-title,
+    .section-subheader {
+        font-size: var(--font-size-xs);
+    }
+}

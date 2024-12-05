@@ -1,0 +1,127 @@
+/* Desktop styles (>1200px) */
+@media screen and (min-width: 1201px) {
+    /* Main container */
+    .main-container {
+        grid-template-columns: var(--panel-width-desktop) minmax(512px, 1fr) var(--panel-width-desktop);
+        gap: var(--spacing-xl);
+    }
+
+    /* Panel dimensions */
+    .left-panel {
+        width: var(--panel-width-desktop);
+    }
+
+    /* Hide mobile elements */
+    .mobile-menu-toggle,
+    .mobile-overlay {
+        display: none;
+    }
+
+    /* Preview area */
+    .preview-area {
+        max-width: 1024px;
+        height: 512px;
+    }
+
+    /* Custom select */
+    .select-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 4px;
+        width: 100%;
+    }
+
+    .select-option {
+        padding: 8px var(--spacing-md);
+    }
+
+    /* History grid */
+    .history-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Enhanced hover effects */
+    .section-header:hover .collapse-button {
+        opacity: 1;
+    }
+
+    /* Larger inputs */
+    .main-input {
+        min-height: 100px;
+    }
+
+    /* Expanded controls */
+    .image-controls {
+        flex-wrap: nowrap;
+    }
+
+    .custom-lora-controls {
+        grid-template-columns: 1fr auto auto;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .right-panel.collapsed {
+        transform: translateX(113%);
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .right-panel {
+        width: 260px;
+    }
+	.progress-wrapper {
+    width: 94%;
+	}
+}
+
+@media screen and (max-width: 1320px) {
+    .right-panel.collapsed {
+        transform: translateX(115%);
+    }
+}
+
+@media screen and (max-width: 1290px) {
+    .right-panel.collapsed {
+        /* transform: translateX(125%); */
+    }
+}
+
+@media screen and (max-width: 1240px) {
+    .right-panel {
+        width: 245px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .right-panel {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1240px) {
+    .right-panel.collapsed .panel-toggle {
+        left: -64px;
+    }
+}
+
+/* Large desktop optimizations (>1600px) */
+@media screen and (min-width: 1601px) {
+    .main-container {
+        gap: var(--spacing-2xl);
+    }
+
+    .preview-area {
+        max-width: 1200px;
+        height: 600px;
+    }
+
+    .history-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+	
+	.progress-wrapper {
+    width: 96.5%;
+	}
+}

@@ -1,0 +1,200 @@
+/* Panel base styles */
+.side-panel {
+    position: relative;
+    transition: all var(--transition-speed) ease;
+    /* background: var(--bg-card); */
+    border-radius: var(--border-radius);
+}
+
+/* Panel content */
+.panel-content {
+    position: relative;
+    min-height: 100%;
+    z-index: 1;
+    /* padding: var(--spacing-lg); */
+}}
+
+/* Left panel */
+.left-panel {
+    width: var(--panel-width-desktop);
+    transform: translateX(0);
+}
+
+/* Right panel */
+.right-panel {
+    width: var(--panel-width-desktop);
+    transform: translateX(0);
+}
+
+/* Active LoRA styles */
+.active-lora-slot {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    transition: all var(--transition-speed) ease;
+}
+
+.lora-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.lora-info {
+    flex: 1;
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.lora-name {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+}
+
+.lora-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--bg-card);
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.lora-controls {
+    flex-grow: 1;
+}
+
+/* Preview area */
+.preview-area {
+    position: relative;
+    border-radius: var(--border-radius);
+    background: var(--bg-card);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+.download-button {
+    position: absolute;
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    opacity: 0;
+}
+
+.preview-wrapper:hover .download-button {
+    opacity: 1;
+}
+
+.download-button:hover {
+    background: var(--accent-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Panel toggle buttons */
+.panel-toggle {
+    position: absolute;
+    top: 50%;
+    width: var(--toggle-button-width);
+    height: var(--toggle-button-height);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+    transform: translateY(-50%);
+    z-index: 11;
+    opacity: 0.5;
+}
+
+.panel-toggle:hover {
+    opacity: 1;
+    width: var(--toggle-button-width-hover);
+    color: var(--accent-primary);
+}
+
+/* Left panel toggle */
+.left-panel .panel-toggle {
+    right: calc(-1 * (var(--toggle-button-width) + var(--toggle-button-offset)));
+    border-radius: var(--border-radius-sm);
+}
+
+/* Right panel toggle */
+.right-panel .panel-toggle {
+    left: calc(-1 * (var(--toggle-button-width) + var(--toggle-button-offset)));
+    border-radius: var(--border-radius-sm);
+}
+
+/* Collapsed states */
+.left-panel.collapsed {
+    transform: translateX(calc(-1 * var(--panel-hide-offset)));
+    margin-right: calc(-1 * var(--panel-width-desktop));
+}
+
+.right-panel.collapsed {
+    transform: translateX(var(--panel-hide-offset));
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .left-panel {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        width: var(--panel-width-mobile);
+        z-index: var(--z-mobile-menu);
+        transition: transform var(--transition-speed) ease;
+        overflow-y: auto;
+    }
+
+    .left-panel.active {
+        transform: translateX(100%);
+    }
+
+    .panel-toggle {
+        display: none;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+
+    .preview-image {
+        max-height: 60vh;
+    }
+}

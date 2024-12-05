@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JL Studio - Требования к системе</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .language-switcher {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .language-switcher a {
+            text-decoration: none;
+            color: #3498db;
+            margin-left: 10px;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .requirement {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .requirement h3 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            background: #2980b9;
+        }
+
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .steps {
+            list-style-type: none;
+            counter-reset: step;
+            padding-left: 0;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            counter-increment: step;
+        }
+
+        .steps li:before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            width: 25px;
+            height: 25px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+        }
+
+        .warning {
+            background: #ffe5e5;
+            border-left: 4px solid #ff4444;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .recommended {
+            color: #28a745;
+            font-weight: bold;
+            padding: 0 5px;
+            background: #e8f5e9;
+            border-radius: 3px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px dotted;
+        }
+
+        a:hover {
+            color: #2980b9;
+            border-bottom: 1px solid;
+        }
+
+        .download-btn {
+            border-bottom: none !important;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        .beta-notice {
+            background: linear-gradient(45deg, #6b5ce7, #4834d4);
+            color: white;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .beta-notice h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-switcher">
+            <a href="requirements_en.html">English version</a>
+        </div>
+
+        <h1>JL Studio - Требования к системе</h1>
+
+        <div class="important">
+            ⚠️ Перед установкой JL Studio необходимо установить все компоненты, перечисленные ниже.
+            После установки каждого компонента рекомендуется перезагрузить компьютер.
+        </div>
+
+        <div class="beta-notice">
+            <h3>✨ Актуальная версия</h3>
+            <p>Последняя версия JL Studio использует веб-интерфейс, который делает работу с программой более удобной и доступной с любого устройства в вашей локальной сети.</p>
+        </div>
+
+        <h2>Обязательные компоненты</h2>
+
+        <div class="requirement">
+            <h3>1. Python 3.10.6</h3>
+            <p>Python - основной язык программирования, необходимый для работы JL Studio.</p>
+            <ol class="steps">
+                <li>Скачайте <span class="recommended">Python 3.10.6</span> (только эта версия)</li>
+                <li>При установке обязательно отметьте "Add Python to PATH"</li>
+                <li>Выберите "Customize installation"</li>
+                <li>Отметьте все дополнительные компоненты</li>
+                <li>Выберите путь установки (рекомендуется оставить по умолчанию)</li>
+            </ol>
+            <a href="https://www.python.org/ftp/python/3.10.6/python-3.10.6-amd64.exe" class="download-btn" target="_blank">📥 Скачать Python 3.10.6</a>
+            <div class="important">
+                ⚠️ Обязательно отметьте "Add Python to PATH" при установке!
+                <br>
+                ⚠️ Используйте именно версию 3.10.6 для максимальной совместимости
+            </div>
+        </div>
+
+        <div class="requirement">
+            <h3>2. Git</h3>
+            <p>Git необходим для загрузки и обновления компонентов программы.</p>
+            <ol class="steps">
+                <li>Скачайте Git для Windows</li>
+                <li>Установите с настройками по умолчанию</li>
+                <li>После установки перезагрузите компьютер</li>
+            </ol>
+            <a href="https://github.com/git-for-windows/git/releases/download/v2.47.0.windows.2/Git-2.47.0.2-64-bit.exe" class="download-btn" target="_blank">📥 Скачать Git 2.47.0</a>
+        </div>
+
+        <div class="requirement">
+            <h3>3. Visual C++ Redistributable</h3>
+            <p>Необходим для работы Python библиотек.</p>
+            <ol class="steps">
+                <li>Скачайте последнюю версию x64</li>
+                <li>Установите с настройками по умолчанию</li>
+            </ol>
+            <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" class="download-btn" target="_blank">📥 Скачать VC++ Redistributable</a>
+        </div>
+
+        <h2>Дополнительные компоненты</h2>
+
+        <div class="requirement">
+            <h3>4. NVIDIA CUDA</h3>
+            <p>Для эффективной работы программы требуется видеокарта NVIDIA с поддержкой CUDA.</p>
+            <div class="important">
+                ℹ️ Если при запуске возникают проблемы с CUDA:
+                <ol>
+                    <li>Убедитесь, что у вас установлены <a href="https://www.nvidia.ru/download/index.aspx" target="_blank">последние драйверы NVIDIA</a></li>
+                    <li>При необходимости установите <a href="https://developer.nvidia.com/cuda-11-8-0-download-archive" target="_blank">CUDA Toolkit 11.8</a></li>
+                </ol>
+            </div>
+            <p>В большинстве случаев дополнительная установка CUDA не требуется, если у вас актуальные драйверы.</p>
+        </div>
+
+        <h2>Настройка Hugging Face</h2>
+
+        <div class="requirement">
+            <h3>5. Токен Hugging Face</h3>
+            <div class="success">
+                ✨ Если у вас есть файл token.txt, поместите его в папку с программой.
+            </div>
+            <p>Для работы программы требуется токен Hugging Face:</p>
+            <ol class="steps">
+                <li>Зарегистрируйтесь на <a href="https://huggingface.co" target="_blank">huggingface.co</a></li>
+                <li>Перейдите в <a href="https://huggingface.co/settings/tokens" target="_blank">настройки токенов</a></li>
+                <li>Создайте новый токен с правами чтения</li>
+                <li>Скопируйте токен в файл token.txt в папке программы</li>
+            </ol>
+            <a href="https://huggingface.co/settings/tokens" class="download-btn" target="_blank">🔑 Создать токен</a>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ Важные замечания</h3>
+            <ul>
+                <li>После установки каждого компонента рекомендуется перезагрузить компьютер</li>
+                <li>Убедитесь, что у вас достаточно места на диске (минимум 50 GB)</li>
+                <li>Требуется стабильное интернет-соединение для загрузки моделей</li>
+                <li>При проблемах с установкой проверьте права администратора</li>
+                <li>Если у вас возникли проблемы, обратитесь в <a href="https://t.me/john_laptev" target="_blank">Telegram</a></li>
+            </ul>
+        </div>
+
+        <div class="success">
+            <h3>✅ После установки всех компонентов</h3>
+            <ol class="steps">
+                <li>Запустите install.bat</li>
+                <li>Дождитесь завершения установки (30-60 минут)</li>
+                <li>Используйте START-WEB_JL_STUDIO.bat для запуска</li>
+                <li>Откройте в браузере http://127.0.0.1:7860</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

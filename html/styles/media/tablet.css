@@ -1,0 +1,119 @@
+/* Tablet styles (768px - 1200px) */
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    /* Main container */
+    .main-container {
+        grid-template-columns: var(--panel-width-tablet) 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* Panel assignments */
+    .left-panel {
+        width: var(--panel-width-tablet);
+    }
+
+    .center-panel {
+        width: 100%;
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* History panel */
+    .right-panel {
+        grid-column: 2;
+        width: 100%;
+        margin-top: var(--spacing-lg);
+    }
+
+	/* Right panel toggle */
+	.right-panel .panel-toggle {
+		display: none !important;
+	}
+
+    /* History modifications */
+    .history-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--spacing-md);
+        width: 100%;
+    }
+
+    /* Panel collapsed states */
+    .left-panel.collapsed {
+        transform: translateX(calc(-1 * var(--panel-hide-offset-tablet)));
+        margin-right: calc(-1 * var(--panel-width-tablet));
+    }
+
+    .left-panel.collapsed .panel-toggle {
+        /* transform: translate(calc(var(--panel-hide-offset-tablet) - var(--toggle-button-width)), -50%); */
+    }
+
+    /* Hide mobile elements */
+    .mobile-menu-toggle,
+    .mobile-overlay {
+        display: none;
+    }
+
+    /* Preview area adjustments */
+    .preview-area {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    /* Workspace padding */
+    .workspace {
+        padding: var(--content-padding-tablet);
+    }
+
+    /* Controls adjustments */
+    .custom-lora-controls {
+        grid-template-columns: 1fr auto auto;
+    }
+
+    .image-controls {
+        flex-wrap: nowrap;
+    }
+
+    /* Section adjustments */
+    .section-content {
+        padding: var(--spacing-lg);
+    }
+
+    /* Input adjustments */
+    .main-input {
+        min-height: 90px;
+    }
+
+    /* Panel toggle buttons */
+    .panel-toggle {
+        width: var(--toggle-button-width);
+        height: 30%;
+    }
+
+    /* Custom select */
+    .select-dropdown {
+        right: 0;
+        width: max-content;
+        min-width: 100%;
+    }
+
+    /* Body spacing */
+    body {
+        padding: var(--spacing-xl);
+    }
+
+    /* Additional spacing adjustments */
+    .slider-control {
+        margin: var(--spacing-sm) 0;
+    }
+
+    .setting-group {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    /* Collapsible sections */
+    section {
+        margin-bottom: var(--spacing-md);
+    }
+}

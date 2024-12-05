@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JL Studio</title>
+    
+    <!-- Base styles -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/breakpoints.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="styles/layout/grid.css">
+    <link rel="stylesheet" href="styles/layout/panels.css">
+    <link rel="stylesheet" href="styles/layout/sections.css">
+    <link rel="stylesheet" href="styles/layout/modal.css">	
+    
+    <!-- Component styles -->
+    <link rel="stylesheet" href="styles/components/buttons.css">
+    <link rel="stylesheet" href="styles/components/inputs.css">
+    <link rel="stylesheet" href="styles/components/sliders.css">
+    <link rel="stylesheet" href="styles/components/modals.css">
+    <link rel="stylesheet" href="styles/components/upload.css">
+    
+    <!-- Media queries -->
+    <link rel="stylesheet" href="styles/media/mobile.css">
+    <link rel="stylesheet" href="styles/media/tablet.css">
+    <link rel="stylesheet" href="styles/media/desktop.css">
+</head>
+<body>
+    <!-- SVG Спрайты -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="collapse-arrow" viewBox="0 0 24 24">
+            <path d="M9.4 18L8 16.6l4.6-4.6L8 7.4 9.4 6l6 6z" fill="currentColor"/>
+        </symbol>
+    </svg>
+
+    <!-- Оверлей для мобильного меню -->
+    <div class="mobile-overlay"></div>
+
+    <div class="page-title">
+        <h1>JL Studio</h1>
+        <div class="subtitle">Создавайте впечатляющие изображения с моделями Flux</div>
+    </div>
+    
+    <div class="workspace">
+        <div class="main-container">
+            <!-- Левая панель -->
+            <div class="side-panel left-panel">
+                <div class="panel-content">
+                    <!-- Соотношение сторон -->
+                    <section class="aspect-ratio-section" data-collapsible="false">
+                        <div class="section-header">
+                            <span class="section-title">Соотношение сторон</span>
+                            <button class="reset-button" title="Сбросить размеры">↺</button>
+                        </div>
+                        <div class="section-content">
+                            <!-- Кастомный селект для соотношения сторон -->
+                            <div class="custom-select aspect-ratio-select">
+                                <div class="select-trigger">
+                                    <div class="aspect-ratio-option">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">1:1 Квадрат</span>
+                                    </div>
+                                    <div class="select-arrow">▼</div>
+                                </div>
+                                <div class="select-dropdown">
+                                    <div class="select-option aspect-ratio-1-1" data-value="1:1">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">1:1 Квадрат</span>
+                                    </div>
+                                    <div class="select-option aspect-ratio-16-9" data-value="16:9">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">16:9 Широкий</span>
+                                    </div>
+                                    <div class="select-option aspect-ratio-9-16" data-value="9:16">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">9:16 Портрет</span>
+                                    </div>
+                                    <div class="select-option aspect-ratio-4-3" data-value="4:3">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">4:3 Стандарт</span>
+                                    </div>
+                                    <div class="select-option aspect-ratio-3-4" data-value="3:4">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">3:4 Портрет</span>
+                                    </div>
+                                    <div class="select-option aspect-ratio-21-9" data-value="21:9">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">21:9 Ультраширокий</span>
+                                    </div>
+                                    <div class="select-option aspect-ratio-9-21" data-value="9:21">
+                                        <div class="aspect-ratio-box"></div>
+                                        <span class="option-text">9:21 Высокий</span>
+                                    </div>
+                                </div>
+                                <select class="hidden-select">
+                                    <option value="1:1">1:1 Квадрат</option>
+                                    <option value="16:9">16:9 Широкий</option>
+                                    <option value="9:16">9:16 Портрет</option>
+                                    <option value="4:3">4:3 Стандарт</option>
+                                    <option value="3:4">3:4 Портрет</option>
+                                    <option value="21:9">21:9 Ультраширокий</option>
+                                    <option value="9:21">9:21 Высокий</option>
+                                </select>
+                            </div>
+                            <!-- Слайдеры размеров -->
+                            <div class="dimension-controls">
+                                <div class="slider-control">
+                                    <div class="slider-header">
+                                        <span>Ширина</span>
+                                        <span class="value inline-value" title="Нажмите для ввода">1024 ✎</span>
+                                    </div>
+                                    <input type="range" class="width-slider" min="256" max="1536" step="64" value="1024">
+                                </div>
+                                <div class="slider-control">
+                                    <div class="slider-header">
+                                        <span>Высота</span>
+                                        <span class="value inline-value" title="Нажмите для ввода">1024 ✎</span>
+                                    </div>
+                                    <input type="range" class="height-slider" min="256" max="1536" step="64" value="1024">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Активные LoRA -->
+                    <section class="active-loras-section" data-collapsible="true" data-collapsed="true">
+                        <div class="section-header">
+                            <span class="section-title">Активные LoRA</span>
+                            <button class="collapse-button" aria-label="Свернуть/развернуть секцию">
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#collapse-arrow"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="section-content">
+                            <div class="active-loras-container">
+                                <!-- Пустое состояние -->
+                                <div class="empty-state">
+                                    <div class="empty-state-text">Нет активных LoRA</div>
+                                    <div class="empty-state-hint">Активируйте LoRA из галереи стилей или загрузите свою</div>
+                                </div>
+                                
+                                <!-- Шаблон для активной LoRA -->
+                                <div class="active-lora-slot" style="display: none;">
+                                    <div class="lora-header">
+                                        <div class="lora-info">
+                                            <div class="lora-name">Название LoRA</div>
+                                            <div class="lora-preview"></div>
+                                        </div>
+                                        <button class="remove-button" title="Удалить">✕</button>
+                                    </div>
+                                    <div class="lora-controls">
+                                        <div class="slider-control">
+                                            <div class="slider-header">
+                                                <span>Сила влияния</span>
+                                                <span class="value inline-value" title="Нажмите для ввода">1.0 ✎</span>
+                                            </div>
+                                            <input type="range" class="strength-slider" min="0" max="2" step="0.01" value="1.0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Пользовательские LoRA -->
+                    <section class="custom-loras-section" data-collapsible="true" data-collapsed="false">
+                        <div class="section-header">
+                            <span class="section-title">Пользовательские LoRA</span>
+                            <button class="reset-button" title="Обновить список">↺</button>
+                            <button class="collapse-button" aria-label="Свернуть/развернуть секцию">
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#collapse-arrow"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="section-content">
+                            <div class="lora-description">
+                                Выберите LoRA из папки<br>
+                                <a href="#" class="folder-path" title="Открыть папку">
+                                    📁 models/flux/loras
+                                </a>
+                                <br>или загрузите свою
+                            </div>
+                            <div class="custom-lora-controls">
+                                <select class="lora-select">
+                                    <option value="">Выберите LoRA</option>
+                                </select>
+                                <div class="lora-buttons">
+                                    <button class="compact-button browse-button" title="Выбрать файл">+</button>
+                                    <button class="compact-button activate-button" title="Активировать">✨</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Галерея стилей LoRA -->
+                    <section class="style-gallery-section" data-collapsible="true" data-collapsed="true">
+                        <div class="section-header">
+                            <span class="section-title">Галерея стилей LoRA</span>
+                            <button class="collapse-button" aria-label="Свернуть/развернуть секцию">
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#collapse-arrow"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="section-content">
+                            <div class="style-grid"></div>
+                        </div>
+                    </section>
+
+                    <!-- Image-to-Image -->
+                    <section class="img2img-section" data-collapsible="true" data-collapsed="true">
+                        <div class="section-header">
+                            <span class="section-title">Преобразование изображения</span>
+                            <button class="collapse-button" aria-label="Свернуть/развернуть секцию">
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#collapse-arrow"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="section-content">
+                            <div class="img2img-info">
+                                Загрузите изображение, чтобы использовать его как основу для генерации. 
+                                Это позволит сохранить композицию и основные элементы исходного изображения.
+                            </div>
+                            <div class="image-controls">
+							<!-- Кнопки будут созданы через js -->
+                            </div>
+                            <div class="image-upload-area">
+                                <div class="upload-placeholder">
+                                    Перетащите изображение сюда или нажмите для загрузки
+                                </div>
+                            </div>
+                            <div class="strength-control">
+                                <div class="slider-header">
+                                    <span>Сила влияния</span>
+                                    <span class="value inline-value" title="Нажмите для ввода">0.2 ✎</span>
+                                    <button class="reset-button" title="Сбросить">↺</button>
+                                </div>
+                                <input type="range" class="strength-slider" min="0" max="1" step="0.01" value="0.2">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Расширенные настройки -->
+                    <section class="advanced-settings-section" data-collapsible="true" data-collapsed="true">
+                        <div class="section-header">
+                            <span class="section-title">Расширенные настройки</span>
+                            <button class="collapse-button" aria-label="Свернуть/развернуть секцию">
+                                <svg viewBox="0 0 24 24">
+                                    <use href="#collapse-arrow"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="section-content">
+                            <!-- CFG Scale -->
+                            <div class="setting-group">
+                                <div class="slider-control">
+                                    <div class="slider-header">
+                                        <span>CFG Scale</span>
+                                        <span class="value inline-value" title="Нажмите для ввода">3.0 ✎</span>
+                                        <button class="reset-button" title="Сбросить">↺</button>
+                                    </div>
+                                    <input type="range" class="cfg-slider" min="1" max="20" step="0.5" value="3.0">
+                                </div>
+                            </div>
+
+                            <!-- Шаги -->
+                            <div class="setting-group">
+                                <div class="slider-control">
+                                    <div class="slider-header">
+                                        <span>Количество шагов</span>
+                                        <span class="value inline-value" title="Нажмите для ввода">28 ✎</span>
+                                        <button class="reset-button" title="Сбросить">↺</button>
+                                    </div>
+                                    <input type="range" class="steps-slider" min="1" max="50" value="28">
+                                </div>
+                            </div>
+
+                            <!-- Seed -->
+                            <div class="setting-group seed-settings">
+                                <div class="section-subheader">Настройки seed</div>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span>Случайный seed</span>
+                                </label>
+                                <div class="slider-control">
+                                    <div class="slider-header">
+                                        <span>Значение seed</span>
+                                        <span class="value inline-value" title="Нажмите для ввода">1234567890 ✎</span>
+                                    </div>
+                                    <input type="range" class="seed-slider" min="0" max="2147483647" value="1234567890">
+                                </div>
+                            </div>
+
+                            <!-- Настройки сохранения -->
+                            <div class="save-settings">
+                                <div class="section-subheader">Настройки сохранения</div>
+                                <select class="format-select">
+                                    <option value="PNG" selected>PNG</option>
+                                    <option value="WEBP">WEBP</option>
+                                    <option value="JPEG">JPEG</option>
+                                </select>
+                                <div class="slider-control quality-control">
+                                    <div class="slider-header">
+                                        <span>Качество</span>
+                                        <span class="value inline-value" title="Нажмите для ввода">100 ✎</span>
+                                        <button class="reset-button" title="Сбросить">↺</button>
+                                    </div>
+                                    <input type="range" class="quality-slider" min="1" max="100" value="100">
+                                </div>
+                                <select class="name-format-select">
+                                    <option value="prompt">Только промпт</option>
+                                    <option value="full">Полный формат имени</option>
+                                    <option value="date">Только дата</option>
+                                    <option value="seed">Дата и seed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- Кнопка для мобильного меню -->
+                <button class="mobile-menu-toggle" aria-label="Открыть/закрыть меню">☰</button>
+            </div>
+
+            <!-- Центральная панель -->
+            <div class="center-panel">
+                <!-- Прогресс-бар -->
+                <div class="progress-wrapper" style="display: none;">
+                    <div class="progress-container">
+                        <div class="progress-status">
+                            <div class="progress-info">
+                                <span class="progress-percent">0%</span>
+                                <span class="progress-step">Шаг 0/28</span>
+                                <span class="progress-time">0с / --с</span>
+                            </div>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill">
+                                <div class="progress-glow"></div>
+                            </div>
+                        </div>
+                        <div class="progress-stage">Подготовка...</div>
+                    </div>
+                </div>
+
+                <!-- Область предпросмотра -->
+                <div id="preview-area" class="preview-area">
+                    <div class="preview-placeholder">
+                        Здесь появится сгенерированное изображение
+                    </div>
+                </div>
+
+                <!-- Блок промпта -->
+                <div class="prompt-section">
+                    <div class="input-block">
+                        <textarea class="main-input" placeholder="Введите описание желаемого изображения..."></textarea>
+                        <div class="input-controls">
+                            <button class="icon-button" title="Случайный промпт">🎲</button>
+                            <button class="generate-button">✨ Создать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая панель (история) -->
+            <div class="side-panel right-panel">
+                <div class="panel-content">
+                    <section class="history-section">
+                        <div class="section-header">
+                            <span class="section-title">История</span>
+                        </div>
+                        <div class="section-content">
+                            <div class="history-grid">
+                                <div class="history-placeholder">
+                                    Здесь будут отображаться сгенерированные изображения
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core scripts -->
+    <script src="scripts/core/utils.js"></script>
+    <script src="scripts/core/api-client.js"></script>
+    <script src="scripts/core/init.js"></script>
+    
+    <!-- Component scripts -->
+    <script src="scripts/components/customSelect.js"></script>
+    <script src="scripts/components/panels.js"></script>
+    <script src="scripts/components/sliders.js"></script>
+    <script src="scripts/components/collapse.js"></script>
+    <script src="scripts/components/upload.js"></script>
+    <script src="scripts/components/loraManager.js"></script>
+    
+    <!-- Feature scripts -->
+    <script src="scripts/features/imageViewer.js"></script>
+    <script src="scripts/features/history.js"></script>
+</body>
+</html>

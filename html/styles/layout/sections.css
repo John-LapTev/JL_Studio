@@ -1,0 +1,531 @@
+/* Базовые стили секций */
+section {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+    margin-bottom: var(--spacing-lg);
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+/* Заголовки секций */
+.section-header {
+    background: var(--bg-input);
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
+}
+
+/* Контент секций */
+.section-content {
+    padding: var(--spacing-lg);
+    transition: all var(--transition-speed) ease;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+/* Сворачиваемые секции */
+[data-collapsible="true"] .section-content {
+    height: 0;
+    transition: height var(--transition-speed) ease,
+                opacity var(--transition-speed) ease,
+                visibility var(--transition-speed) ease;
+    overflow: hidden;
+}
+
+[data-collapsible="true"][data-collapsed="false"] .section-content {
+    height: auto;
+}
+
+[data-collapsed="true"] .section-content {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Область предпросмотра */
+.preview-area {
+    width: 100%;
+    position: relative;
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    aspect-ratio: 1;
+    margin-bottom: 10px;
+}
+
+.preview-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card);
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.preview-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 0 var(--spacing-xl);
+    width: 100%;
+}
+
+/* Секция промпта */
+.prompt-section {
+    background: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+}
+
+.main-input {
+    min-height: 100px;
+    max-height: 300px;
+    resize: vertical;
+    padding: var(--spacing-lg);
+}
+
+/* Секция истории */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    position: relative;
+}
+
+.history-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-input);
+}
+
+.history-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+    cursor: pointer;
+}
+
+.history-image:hover {
+    transform: scale(1.05);
+}
+
+.history-tooltip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    transform: translateY(100%);
+    transition: transform var(--transition-speed) ease;
+}
+
+.history-item:hover .history-tooltip {
+    transform: translateY(0);
+}
+
+.history-placeholder {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    padding: 0 var(--spacing-xl);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+/* Управление размерами */
+.dimension-controls {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+/* Активные LoRA */
+.active-loras-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.empty-state {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.empty-state-text {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-hint {
+    font-size: var(--font-size-xs);
+    opacity: 0.7;
+}
+
+.active-lora-slot {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+}
+
+.lora-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+}
+
+.lora-info {
+    flex-grow: 1;
+}
+
+.lora-name {
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.lora-preview {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius-sm);
+    background-size: cover;
+    background-position: center;
+}
+
+.lora-controls {
+    margin-top: var(--spacing-md);
+}
+
+/* Пользовательские LoRA */
+.custom-lora-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.lora-buttons {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.folder-path {
+    color: var(--accent-primary);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-input);
+    display: inline-block;
+    margin: var(--spacing-xs) 0;
+    transition: all var(--transition-speed) ease;
+}
+
+.folder-path:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.custom-loras-section .lora-description {
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Галерея стилей */
+.style-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+}
+
+.lora-card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease;
+}
+
+.lora-card:hover {
+    transform: translateY(-2px);
+}
+
+.lora-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lora-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-sm);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: var(--font-size-xs);
+    text-align: center;
+}
+
+/* Преобразование изображения */
+.img2img-section .image-upload-area {
+    min-height: 200px;
+}
+
+.img2img-section .image-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.img2img-section .remove-image-button {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-secondary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    transition: all var(--transition-speed) ease;
+}
+
+.img2img-section .remove-image-button:hover {
+    background: var(--error);
+    border-color: var(--error);
+    color: white;
+}
+
+.img2img-info {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Настройки качества */
+.quality-control {
+    display: block !important;
+    margin: var(--spacing-md) 0;
+}
+
+.quality-settings {
+    background: var(--bg-input);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.quality-settings .slider-header {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Прогресс бар */
+.progress-wrapper {
+    position: absolute;
+    top: -1px;
+    left: 14.5px;
+    right: 0;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background: var(--bg-card);
+    overflow: hidden;
+    z-index: 100;
+    width: 95.5%;
+}
+
+.progress-container {
+    padding: var(--spacing-md) var(--spacing-xl);
+}
+
+.progress-status {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+}
+
+.progress-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.progress-percent {
+    font-family: 'Consolas', monospace;
+    font-weight: 500;
+    min-width: 60px;
+}
+
+.progress-step {
+    color: var(--text-secondary);
+}
+
+.progress-time {
+    margin-left: auto;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.progress-track {
+    height: 4px;
+    background: var(--bg-input);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.progress-stage {
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+    margin-top: var(--spacing-xs);
+}
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    animation: glow 2s linear infinite;
+}
+
+@keyframes glow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Сохранение */
+.save-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    background: var(--bg-input);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.save-settings select {
+    width: 100%;
+}
+
+/* Seed настройки */
+.seed-settings {
+    background: var(--bg-input);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.seed-settings .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Мобильные адаптации */
+@media (max-width: 768px) {
+    section {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .section-content {
+        padding: var(--spacing-md);
+    }
+
+    .preview-area {
+        height: auto;
+    }
+
+    .history-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .style-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .lora-card {
+        aspect-ratio: 1;
+    }
+    
+    .custom-lora-controls {
+        flex-direction: column;
+    }
+    
+    .lora-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        padding: var(--spacing-sm);
+    }
+
+    .section-content {
+        padding: var(--spacing-sm);
+    }
+
+    .history-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--spacing-sm);
+    }
+    
+    .style-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

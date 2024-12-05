@@ -1,0 +1,196 @@
+/* Общие стили для кнопок */
+button {
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+}
+
+/* Кнопка генерации */
+.generate-button {
+    flex-grow: 1;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 500;
+}
+
+.generate-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+}
+
+.generate-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Кнопки с иконками */
+.icon-button {
+    padding: var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-primary);
+    min-width: 36px;
+    font: inherit;
+}
+
+.icon-button:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    transform: translateY(-1px);
+}
+
+/* Кнопка сброса */
+.reset-button {
+    color: var(--text-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0.7;
+    font: inherit;
+}
+
+.reset-button:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+/* Кнопка сворачивания секции */
+.collapse-button {
+    color: var(--text-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) ease;
+}
+
+.collapse-button:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+
+.collapse-button svg {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition-speed) ease;
+}
+
+[data-collapsed="false"] .collapse-button svg {
+    transform: rotate(90deg);
+}
+
+/* Кнопка удаления */
+.remove-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xs);
+    font: inherit;
+}
+
+.remove-button:hover {
+    background: #e10005;
+    border-color: #ff0000;
+    color: white;
+}
+
+/* Кнопки управления изображениями */
+.image-control-button {
+    flex: 1;
+    padding: var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-secondary);
+    font: inherit;
+}
+
+.image-control-button:hover {
+    background: var(--bg-hover);
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+/* Кнопки управления LoRA */
+.compact-button {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    min-width: 28px;
+    height: 28px;
+    font-size: var(--font-size-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compact-button:hover {
+    border-color: var(--accent-primary);
+    color: var(--text-primary);
+}
+
+.compact-button.activate-button {
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+    border: none;
+}
+
+.compact-button.activate-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(236, 72, 153, 0.2);
+}
+
+/* Кнопка мобильного меню */
+.mobile-menu-toggle {
+    position: fixed;
+    top: var(--spacing-lg);
+    left: var(--spacing-lg);
+    width: 40px;
+    height: 40px;
+    background: var(--bg-card);
+    border-radius: var(--border-radius-sm);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    z-index: var(--z-mobile-menu);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu-toggle:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* Мобильные адаптации */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .image-control-button {
+        flex: 1 1 calc(33.333% - 8px);
+    }
+    
+    .custom-lora-controls .activate-button {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-control-button {
+        flex: 1 1 100%;
+    }
+}

@@ -1,0 +1,39 @@
+/* Breakpoints and responsive variables */
+:root {
+    /* Breakpoint values */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1200px;
+    --breakpoint-large: 1600px;
+
+    /* Panel base dimensions */
+    --panel-width-mobile: 85%;
+    --panel-width-tablet: 280px;
+    --panel-width-desktop: 320px;
+    --panel-R-desktop: 300px;
+    --panel-R-desktop-1320: 260px;
+    --panel-R-desktop-1240: 245px;
+
+    /* Toggle button dimensions */
+    --toggle-button-width: 16px;
+    --toggle-button-width-hover: 20px;
+    --toggle-button-height: 35%;
+    --toggle-button-offset: 10px; /* Отступ кнопки от панели */
+
+    /* Panel hide calculations */
+    --panel-hide-offset: calc(var(--panel-width-desktop) + var(--toggle-button-width) + var(--toggle-button-offset));
+    --panel-hide-offset-tablet: calc(var(--panel-width-tablet) + var(--toggle-button-width) + var(--toggle-button-offset));
+    
+    /* Right panel hide calculations for different widths */
+    --panel-R-hide-offset-1200: calc(var(--panel-R-desktop) + var(--toggle-button-width) + var(--toggle-button-offset));
+    --panel-R-hide-offset-1320: calc(var(--panel-R-desktop-1320) + var(--toggle-button-width) + var(--toggle-button-offset));
+    --panel-R-hide-offset-1240: calc(var(--panel-R-desktop-1240) + var(--toggle-button-width) + var(--toggle-button-offset));
+
+    /* Content padding */
+    --content-padding-mobile: var(--spacing-md);
+    --content-padding-tablet: var(--spacing-lg);
+    --content-padding-desktop: var(--spacing-xl);
+
+    /* History grid settings */
+    --history-grid-max-width: calc(100% - var(--spacing-xl) * 2);
+}

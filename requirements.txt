@@ -1,0 +1,40 @@
+# Базовые зависимости
+huggingface-hub==0.26.2
+
+# CUDA и PyTorch
+--extra-index-url https://download.pytorch.org/whl/cu118
+torch==2.5.1+cu118
+torchvision==0.20.1+cu118
+torchaudio==2.5.1+cu118
+
+# Hugging Face компоненты
+transformers @ git+https://github.com/huggingface/transformers.git@19dabe96362803fb0a9ae7073d03533966598b17
+diffusers @ git+https://github.com/huggingface/diffusers.git@c96bfa5c80eca798d555a79a491043c311d0f608
+accelerate @ git+https://github.com/huggingface/accelerate.git@29be4788629b772a3b722076e433b5b3b5c85da3
+peft @ git+https://github.com/huggingface/peft.git@3f9ce553e21569e21269b5ba91d7390f7229199a
+
+# ML зависимости
+safetensors==0.4.5
+sentencepiece==0.2.0
+protobuf==5.28.3
+numpy==2.1.3
+
+# Обработка данных
+pandas==2.2.3
+pillow==11.0.0
+
+# Веб-сервер
+fastapi==0.115.5
+uvicorn==0.32.1
+python-multipart==0.0.12
+requests==2.32.3
+
+# Вспомогательные библиотеки
+aiofiles==23.2.1
+colorama==0.4.6
+tqdm==4.67.1
+
+# Дополнительные зависимости
+gradio==5.6.0
+ruff==0.8.1
+tokenizers==0.20.3

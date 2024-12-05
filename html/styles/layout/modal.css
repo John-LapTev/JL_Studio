@@ -1,0 +1,197 @@
+/* История */
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    min-height: 120px;
+}
+
+.history-item {
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-input);
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease;
+}
+
+.history-item:hover {
+    transform: scale(1.05);
+}
+
+.history-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Модальное окно истории */
+.history-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: var(--z-modal);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.history-modal.active {
+    display: flex;
+}
+
+.history-modal-content {
+    display: flex;
+    gap: var(--spacing-xl);
+    background: var(--bg-workspace);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    max-width: 90vw;
+    max-height: 90vh;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    width: 32px;
+    height: 32px;
+    background: var(--bg-card);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: var(--font-size-xl);
+    transition: all var(--transition-speed) ease;
+}
+
+.close-modal:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.modal-preview {
+    flex: 1;
+    max-width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-preview img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+.modal-info {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    overflow-y: auto;
+    padding-right: var(--spacing-md);
+}
+
+.modal-info h3 {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.info-group label {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.info-group .prompt-text {
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    background: var(--bg-input);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    min-height: 60px;
+    max-height: 120px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: auto;
+}
+
+.modal-actions button {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--border-radius-sm);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    transition: all var(--transition-speed) ease;
+}
+
+.modal-actions button:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.modal-actions .apply-settings {
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    color: white;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+    .history-modal-content {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .modal-preview {
+        max-width: 100%;
+        height: 50vh;
+    }
+
+    .modal-info {
+        width: 100%;
+        max-height: 35vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .history-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

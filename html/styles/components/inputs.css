@@ -1,0 +1,310 @@
+/* Input block */
+.input-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+/* Main textarea */
+.main-input {
+    width: 100%;
+    min-height: 100px;
+    max-height: 300px;
+    padding: var(--spacing-lg);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    font-family: inherit;
+    resize: vertical;
+}
+
+.main-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.1);
+}
+
+/* Hidden select */
+.hidden-select {
+    display: none;
+}
+
+/* Custom select styles */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+/* When select is open */
+.custom-select.open {
+    z-index: 1000;
+}
+
+/* Add margin after select */
+.aspect-ratio-select {
+    margin-bottom: var(--spacing-lg);
+}
+
+.select-trigger, .select-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.select-trigger {
+    width: 100%;
+    padding: 6px var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.select-trigger:hover {
+    border-color: var(--accent-primary);
+}
+
+.aspect-ratio-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+/* Aspect ratio visualization */
+.aspect-ratio-box {
+    width: 24px;
+    height: 24px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aspect-ratio-box::after {
+    content: '';
+    position: absolute;
+    background: var(--accent-primary);
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all var(--transition-speed) ease;
+}
+
+/* Sizes for different ratios */
+.aspect-ratio-1-1 .aspect-ratio-box::after {
+    width: 16px;
+    height: 16px;
+}
+
+.aspect-ratio-16-9 .aspect-ratio-box::after {
+    width: 16px;
+    height: 9px;
+}
+
+.aspect-ratio-9-16 .aspect-ratio-box::after {
+    width: 9px;
+    height: 16px;
+}
+
+.aspect-ratio-4-3 .aspect-ratio-box::after {
+    width: 16px;
+    height: 12px;
+}
+
+.aspect-ratio-3-4 .aspect-ratio-box::after {
+    width: 12px;
+    height: 16px;
+}
+
+.aspect-ratio-21-9 .aspect-ratio-box::after {
+    width: 16px;
+    height: 7px;
+}
+
+.aspect-ratio-9-21 .aspect-ratio-box::after {
+    width: 7px;
+    height: 16px;
+}
+
+/* Dropdown list */
+.select-dropdown {
+    position: absolute;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    z-index: 1000;
+    scroll-behavior: smooth;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-height: 180px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+/* Dropdown positioning */
+.custom-select:not(.mobile-view) .select-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+}
+
+/* Mobile version */
+@media (max-width: 768px) {
+    .custom-select.mobile-view .select-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% - 32px);
+        max-width: 320px;
+        max-height: 80vh;
+    }
+    
+    /* Background dimming */
+    .custom-select.mobile-view::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-speed) ease;
+    }
+    
+    .custom-select.mobile-view.open::before {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Open state */
+.custom-select.open .select-dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Select options */
+.select-option {
+    padding: 6px var(--spacing-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.select-option:hover {
+    background: var(--bg-hover);
+}
+
+.select-option.selected {
+    background: var(--bg-value);
+}
+
+/* Option text and arrow */
+.option-text {
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+}
+
+.select-arrow {
+    color: var(--text-secondary);
+    margin-left: auto;
+    transition: transform var(--transition-speed) ease;
+}
+
+.custom-select.open .select-arrow {
+    transform: rotate(180deg);
+}
+
+/* Value styles */
+.value {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    background: var(--bg-value);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+}
+
+.value:hover {
+    background: var(--bg-hover);
+}
+
+/* Value input styles */
+.value-input {
+    background: var(--bg-input);
+    border: 1px solid var(--accent-primary);
+    border-radius: 4px;
+    color: var(--text-primary);
+    padding: 2px 6px;
+    width: 60px;
+    text-align: right;
+    font-size: var(--font-size-sm);
+    margin: -2px -6px;
+}
+
+/* Regular selects */
+.format-select,
+.name-format-select,
+.lora-select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.format-select:hover,
+.name-format-select:hover,
+.lora-select:hover {
+    border-color: var(--accent-primary);
+}
+
+/* Scrollbar styles */
+.select-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.select-dropdown::-webkit-scrollbar-track {
+    background: var(--bg-input);
+    border-radius: 3px;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 3px;
+    transition: all var(--transition-speed) ease;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}
+
+/* Containers */
+.left-panel,
+.center-panel,
+.right-panel {
+    position: relative;
+    z-index: 1;
+}
+.center-panel {
+    margin-left: 10px;
+    margin-right: 10px;
+}

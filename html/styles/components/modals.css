@@ -1,0 +1,153 @@
+/* Модальное окно просмотра изображений */
+.history-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.history-tabs .tab-button {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    width: 45%;
+}
+
+.history-tabs .tab-button.active {
+    background: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: var(--z-modal);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Изображение в модальном окне */
+.image-modal img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+/* Кнопки навигации */
+.image-modal .nav-prev,
+.image-modal .nav-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-card);
+    border: none;
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    width: 40px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all var(--transition-speed) ease;
+    border-radius: var(--border-radius);
+}
+
+.image-modal .nav-prev {
+    left: var(--spacing-xl);
+}
+
+.image-modal .nav-next {
+    right: var(--spacing-xl);
+}
+
+.image-modal .nav-prev:hover,
+.image-modal .nav-next:hover {
+    opacity: 1;
+    background: var(--accent-primary);
+}
+
+/* Кнопка закрытия */
+.image-modal .close-button {
+    position: absolute;
+    top: var(--spacing-xl);
+    right: var(--spacing-xl);
+    background: var(--bg-card);
+    border: none;
+    color: var(--text-primary);
+    font-size: var(--font-size-2xl);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.image-modal .close-button:hover {
+    opacity: 1;
+    background: var(--accent-primary);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .image-modal .nav-prev,
+    .image-modal .nav-next {
+        width: 30px;
+        height: 60px;
+        font-size: var(--font-size-xl);
+    }
+
+    .image-modal .nav-prev {
+        left: var(--spacing-sm);
+    }
+
+    .image-modal .nav-next {
+        right: var(--spacing-sm);
+    }
+
+    .image-modal .close-button {
+        top: var(--spacing-lg);
+        right: var(--spacing-lg);
+        width: 30px;
+        height: 30px;
+        font-size: var(--font-size-xl);
+    }
+
+    .image-modal img {
+        max-width: 95%;
+        max-height: 95vh;
+    }
+}
+
+/* Мобильная адаптация для маленьких экранов */
+@media (max-width: 480px) {
+    .image-modal .close-button {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+}
